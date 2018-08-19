@@ -6,6 +6,8 @@ Current algorithm from: https://algorithms.tutorialhorizon.com/dynamic-programmi
 
 Drawback this method:
 
-- maximum matrix size is about 20000 * 20000
+- maximum matrix size is about 40000 * 40000
 
 - is getting slow on larger matrixes
+
+Improvement 1: Use boolean input matrix, byte temporary matrix

@@ -4,21 +4,21 @@ namespace LargestSquare
 {
     public class Calc
     {
-        public static int GetMaxSubSquare(int[,] m, int row, int cols)
+        public static int GetMaxSubSquare(bool[,] m, int row, int cols)
         {
             // define nex matrix, same size
-            var sub = new int[row,cols];
+            var sub = new byte[row,cols];
 
             // copy the first row
             for (int i = 0; i < cols; i++)
             {
-                sub[0,i] = m[0, i];
+                sub[0,i] = Convert.ToByte(m[0, i]);
             }
 
             // copy the first column
             for (int i = 0; i < row; i++)
             {
-                sub[i,0] = m[i,0];
+                sub[i,0] = Convert.ToByte(m[i,0]);
             }
 
 
@@ -28,10 +28,10 @@ namespace LargestSquare
             {
                 for (int j = 1; j < cols; j++)
                 {
-                    if (m[i,j]==1)
+                    if (m[i,j])
                     {
-                        sub[i,j] = Math.Min(sub[i - 1, j - 1],
-                                Math.Min(sub[i, j - 1], sub[i - 1, j])) + 1;
+                        sub[i,j] = Convert.ToByte(Math.Min(sub[i - 1, j - 1],
+                                Math.Min(sub[i, j - 1], sub[i - 1, j])) + 1);
                     }
                     else
                     {
