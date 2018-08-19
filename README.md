@@ -1,13 +1,20 @@
 # LargestSquare
 
-Find largest square in matrix of n*n
+Find largest square in array of points
 
-Current algorithm from: https://algorithms.tutorialhorizon.com/dynamic-programming-maximum-size-square-sub-matrix-with-all-1s/
+For example:
 
-Drawback this method:
+```
+[1,1,0]
+[1,1,0]
+[0,0,0] 
 
-- maximum matrix size is about 40000 * 40000
+Result: 2
+```
+ 
+Input: List of points list(int, int)
 
-- is getting slow on larger matrixes
+Output: Largessquare (int)
 
-Improvement 1: Use boolean input matrix, byte temporary matrix
+Algorithm: Loop through all points in list of points, for each point determine the maximum square to the right and bottom. Return
+maximum of those squares.

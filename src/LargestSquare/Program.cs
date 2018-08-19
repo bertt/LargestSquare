@@ -6,16 +6,17 @@ namespace LargestSquare
     {
         static void Main(string[] args)
         {
-            int w = 40000;
-            var m = new bool[w,w];
-            m[0, 0] = true;
-            m[1, 1] = true;
-            m[1, 0] = true;
-            m[0, 1] = true;
-            m[2, 2] = true;
-            // expected output: 2
-            Console.WriteLine("Largest sub square: " + Calc.GetMaxSubSquare(m,w,w));
+            var p0 = new Point { X = 0, Y = 0 };
+            var p1 = new Point { X = 1, Y = 0 };
+            var p2 = new Point { X = 1, Y = 1 };
+            var p3 = new Point { X = 0, Y = 1 };
+            var points = new Points() { p0, p1, p2, p3 };
+
+            var max2 = Calc.GetLargestSquare(points);
+            Console.WriteLine(max2);
+
             Console.ReadKey();
         }
+
     }
 }
