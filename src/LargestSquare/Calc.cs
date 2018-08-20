@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LargestSquare
+﻿namespace LargestSquare
 {
     public class Calc
     {

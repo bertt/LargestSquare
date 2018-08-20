@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LargestSquare
 {
-    public class Point:IEquatable<Point>
+    public sealed class Point:IEquatable<Point>
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -12,11 +12,6 @@ namespace LargestSquare
         {
             if (other == null) return false;
             return X.Equals(other.X) && Y.Equals(other.Y);
-        }
-
-        public static implicit operator int(Point v)
-        {
-            throw new NotImplementedException();
         }
     }
 
