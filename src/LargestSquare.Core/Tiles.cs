@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Tiles.Tools;
 
 namespace LargestSquare
 {
-    public sealed class Point:IEquatable<Point>
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public bool Equals(Point other)
-        {
-            if (other == null) return false;
-            return X.Equals(other.X) && Y.Equals(other.Y);
-        }
-    }
-
-    public class Points : List<Point>
+    public class Tiles : List<Tile>
     {
         // get the square to the right and bottom (if any)
-        public int GetSquare(Point p) {
+        public int GetSquare(Tile p)
+        {
             var squaresize = 1;
             var makebigger = true;
-            while (makebigger) {
+            while (makebigger)
+            {
                 var hasring = HasNextRing(p, squaresize);
 
                 if (!hasring)
@@ -37,29 +27,30 @@ namespace LargestSquare
             return squaresize;
         }
 
-        private bool HasNextRing(Point p, int delta)
+        private bool HasNextRing(Tile p, int delta)
         {
             var j = p.Y + delta;
-            for (var i = p.X; i <= p.X + delta;i++)
+            for (var i = p.X; i <= p.X + delta; i++)
             {
-                var hasPoint = HasPoint(i, j);
+                var hasPoint = HasPoint(i, j,p.Z);
                 if (!hasPoint) { return false; }
             }
 
             var ii = p.X + delta;
             for (var jj = p.Y; jj <= p.Y + delta; jj++)
             {
-                var hasPoint = HasPoint(ii, jj);
+                var hasPoint = HasPoint(ii, jj, p.Z);
                 if (!hasPoint) { return false; }
             }
 
             return true;
         }
 
-        private bool HasPoint(int x, int y)
+        private bool HasPoint(int x, int y, int z)
         {
-            var n = new Point { X = x, Y = y};
+            var n = new Tile { X = x, Y = y, Z=z };
             return Contains(n);
         }
     }
+
 }

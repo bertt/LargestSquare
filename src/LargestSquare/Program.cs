@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LargestSquare.Core;
+using System;
+using Tiles.Tools;
 
 namespace LargestSquare
 {
@@ -6,14 +8,14 @@ namespace LargestSquare
     {
         static void Main(string[] args)
         {
-            var p0 = new Point { X = 0, Y = 0 };
-            var p1 = new Point { X = 1, Y = 0 };
-            var p2 = new Point { X = 1, Y = 1 };
-            var p3 = new Point { X = 0, Y = 1 };
+            var p0 = new Tile { X = 0, Y = 0, Z=10 };
+            var p1 = new Tile { X = 1, Y = 0, Z=10 };
+            var p2 = new Tile { X = 1, Y = 1, Z=10 };
+            var p3 = new Tile { X = 0, Y = 1, Z=10 };
 
-            var points = new Points() { p0, p1, p2, p3 };
+            var tiles = new Tiles() { p0, p1, p2, p3 };
 
-            var max2 = Calc.GetLargestSquare(points);
+            var max2 = Calc.GetLargestSquare(tiles);
             Console.WriteLine(max2);
 
             Console.ReadKey();
