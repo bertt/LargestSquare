@@ -1,5 +1,7 @@
 # LargestSquare
 
+NuGet: https://www.nuget.org/packages/LargestSquareCalculator/
+
 Find largest square in array of points
 
 For example:
