@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/bertt/LargestSquare</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bertt/LargestSquare</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageId>LargestSquareCalculator</PackageId>
+    <Authors>Bert Temme</Authors>
+    <Company>Bert  Temme</Company>
+    <Product>LargestSquareCalculator</Product>
+    <Description>Calculates the largest square of set of tiles</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
