@@ -38,7 +38,7 @@ namespace LargestSquare.Tests
         [Test]
         public void Test3()
         {
-            var square = LargestSquareCalculator.GetLargestSquare(new List<Tile>());
+            var square = LargestSquareCalculator.Calculate(new List<Tile>());
             Assert.IsTrue(square == 0);
         }    
     }
