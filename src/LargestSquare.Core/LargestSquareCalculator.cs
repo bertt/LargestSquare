@@ -5,23 +5,25 @@ namespace LargestSquare.Core
 {
     public class LargestSquareCalculator
     {
-        public static int Calculate(List<Tile> tiles)
+        public static (Tile startTile, int size) Calculate(List<Tile> tiles)
         {
             var largestsquare = 0;
+            Tile starttile = null;
 
             foreach (var p in tiles)
             {
                 var square = GetSquare(tiles, p);
                 if (square > largestsquare)
                 {
+                    starttile = p;
                     largestsquare = square;
                 }
             }
 
-            return largestsquare;
+            return (starttile, largestsquare);
         }
 
-        public static int GetSquare(List<Tile> tiles, Tile p)
+        private static int GetSquare(List<Tile> tiles, Tile p)
         {
             var squaresize = 1;
             var makebigger = true;

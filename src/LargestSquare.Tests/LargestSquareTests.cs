@@ -23,23 +23,17 @@ namespace LargestSquare.Tests
         [Test]
         public void Test1()
         {
-            var max2 = LargestSquareCalculator.Calculate(tiles);
+            var res = LargestSquareCalculator.Calculate(tiles);
 
-            Assert.IsTrue(max2 == 2); 
-        }
-
-        [Test]
-        public void Test2()
-        {
-            var square = LargestSquareCalculator.GetSquare(tiles, tiles[0]);
-            Assert.IsTrue(square == 2);
+            Assert.IsTrue(res.size == 2);
+            Assert.IsTrue(res.startTile == tiles[0]);
         }
 
         [Test]
         public void Test3()
         {
-            var square = LargestSquareCalculator.Calculate(new List<Tile>());
-            Assert.IsTrue(square == 0);
+            var res = LargestSquareCalculator.Calculate(new List<Tile>());
+            Assert.IsTrue(res.size == 0);
         }    
     }
 }
