@@ -5,9 +5,9 @@ namespace LargestSquare.Core
 {
     public class LargestSquareCalculator
     {
-        public static List<LargestSquare> Calculate(List<Tile> tiles)
+        public static List<Square> Calculate(List<Tile> tiles)
         {
-            var res = new List<LargestSquare>();
+            var res = new List<Square>();
             var largestsquare = 0;
 
             foreach (var tile in tiles)
@@ -20,7 +20,7 @@ namespace LargestSquare.Core
                 }
                 if(square >= largestsquare)
                 {
-                    res.Add(new LargestSquare { Size = square, StartTile = tile });
+                    res.Add(new Square { Size = square, StartTile = tile });
                 }
             }
 
