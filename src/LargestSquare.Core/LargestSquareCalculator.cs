@@ -5,68 +5,79 @@ namespace LargestSquare.Core
 {
     public class LargestSquareCalculator
     {
-        public static (Tile startTile, int size) Calculate(List<Tile> tiles)
+        public static List<LargestSquare> Calculate(List<Tile> tiles)
         {
+            var res = new List<LargestSquare>();
             var largestsquare = 0;
-            Tile starttile = null;
 
-            foreach (var p in tiles)
+            foreach (var tile in tiles)
             {
-                var square = GetSquare(tiles, p);
+                var square = GetSquare(tiles, tile);
                 if (square > largestsquare)
                 {
-                    starttile = p;
                     largestsquare = square;
+                    res.Clear();
+                }
+                if(square >= largestsquare)
+                {
+                    res.Add(new LargestSquare { Size = square, StartTile = tile });
                 }
             }
 
-            return (starttile, largestsquare);
+            return res;
         }
 
-        private static int GetSquare(List<Tile> tiles, Tile p)
+
+        public static List<Tile> TryNextRingTiles(List<Tile> tiles, Tile startTile, int delta)
+        {
+            var res = new List<Tile>();
+
+            for (var y = startTile.Y; y < startTile.Y + delta; y++)
+            {
+                res.Add(new Tile(startTile.X + delta-1, y, startTile.Z));
+            }
+
+            for (var x = startTile.X; x < startTile.X + delta - 1; x++)
+            {
+                res.Add(new Tile(x, startTile.Y + delta-1, startTile.Z));
+            }
+
+            return res;
+        }
+
+
+        private static int GetSquare(List<Tile> tiles, Tile startTile)
         {
             var squaresize = 1;
             var makebigger = true;
             while (makebigger)
             {
-                var hasring = HasNextRing(tiles, p, squaresize);
-
-                if (!hasring)
+                var nextRingTiles = TryNextRingTiles(tiles, startTile, squaresize+1);
+                var hasNextRing = HasTiles(tiles,nextRingTiles);
+                if (hasNextRing)
                 {
-                    makebigger = false;
+                    squaresize++;
                 }
                 else
                 {
-                    squaresize++;
+                    makebigger = false;
                 }
             }
 
             return squaresize;
         }
 
-        private static bool HasNextRing(List<Tile> tiles, Tile p, int delta)
+        private static bool HasTiles(List<Tile> tiles, List<Tile> potentialTiles)
         {
-            var j = p.Y + delta;
-            for (var i = p.X; i <= p.X + delta; i++)
+            foreach (var potentialTile in potentialTiles)
             {
-                var hasPoint = HasPoint(tiles, i, j, p.Z);
-                if (!hasPoint) { return false; }
-            }
-
-            var ii = p.X + delta;
-            for (var jj = p.Y; jj <= p.Y + delta; jj++)
-            {
-                var hasPoint = HasPoint(tiles, ii, jj, p.Z);
-                if (!hasPoint) { return false; }
+                if (!tiles.Contains(potentialTile))
+                {
+                    return false;
+                }
             }
 
             return true;
-        }
-
-        private static bool HasPoint(List<Tile> tiles, int x, int y, int z)
-        {
-            var n = new Tile { X = x, Y = y, Z = z };
-            return tiles.Contains(n);
         }
     }
 }
