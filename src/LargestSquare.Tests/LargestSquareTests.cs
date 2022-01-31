@@ -52,6 +52,43 @@ namespace LargestSquare.Tests
             Assert.IsTrue(res[1].StartTile.Equals(p0)); 
         }
 
+        [Test]
+        public void LargestSquareTestMultipleValues()
+        {
+            var p0 = new Tile { X = 5, Y = 10, Z = 10 };
+            var p1 = new Tile { X = 6, Y = 10, Z = 10 };
+            var p2 = new Tile { X = 5, Y = 11, Z = 10 };
+            var p3 = new Tile { X = 6, Y = 11, Z = 10 };
+            var p4 = new Tile { X = 5, Y = 12, Z = 11 };
+            var p5 = new Tile { X = 6, Y = 12, Z = 11 };
+            var p6 = new Tile { X = 5, Y = 13, Z = 11 };
+            var p7 = new Tile { X = 6, Y = 13, Z = 11 };
+
+            tiles = new List<Tile> { p0,p1,p2, p3, p4, p5, p6, p7 };
+            var res = LargestSquareCalculator.Calculate(tiles);
+            Assert.IsTrue(res.Count == 2);
+            Assert.IsTrue(res[0].Size == 2);
+            Assert.IsTrue(res[0].StartTile.Equals(p0));
+        }
+
+        [Test]
+        public void LargestSquareTestMultipleValues2()
+        {
+            var p0 = new Tile { X = 5, Y = 10, Z = 1 };
+            var p1 = new Tile { X = 6, Y = 10, Z = 1 };
+            var p2 = new Tile { X = 5, Y = 11, Z = 1 };
+            var p3 = new Tile { X = 6, Y = 11, Z = 1 };
+            var p4 = new Tile { X = 5, Y = 12, Z = 0 };
+            var p5 = new Tile { X = 6, Y = 12, Z = 0 };
+            var p6 = new Tile { X = 5, Y = 13, Z = 0 };
+            var p7 = new Tile { X = 6, Y = 13, Z = 0 };
+
+            tiles = new List<Tile> { p0, p1, p2, p3, p4, p5, p6, p7 };
+            var res = LargestSquareCalculator.Calculate(tiles);
+            Assert.IsTrue(res.Count == 2);
+            Assert.IsTrue(res[0].Size == 2);
+            Assert.IsTrue(res[0].StartTile.Equals(p0));
+        }
 
         [Test]
         public void GetNextRingTilesTest()

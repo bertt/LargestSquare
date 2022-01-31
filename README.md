@@ -13,6 +13,18 @@ For example:
 
 Result: 1 square, size 2
 ```
+
+Example 2:
+
+```
+[1,1,0]
+[1,1,0]
+[0,0,0]
+[0,0,0]
+
+Result: 3 square, size 2
+```
+
  
 Input: List of points list(int, int)
 
