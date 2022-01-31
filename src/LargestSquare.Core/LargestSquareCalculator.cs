@@ -13,12 +13,8 @@ namespace LargestSquare.Core
 
             if (tiles.Count > 0)
             {
-                var minx = tiles.Select(t => t.X).Min();
                 var maxx = tiles.Select(t => t.X).Max();
-                var dx = maxx - minx + 1;
-                var miny = tiles.Select(t => t.Y).Min();
                 var maxy = tiles.Select(t => t.Y).Max();
-                var dy = maxy - miny + 1;
 
                 foreach (var tile in tiles)
                 {
