@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Tiles.Tools;
 
 namespace LargestSquare.Core
@@ -10,17 +11,30 @@ namespace LargestSquare.Core
             var res = new List<Square>();
             var largestsquare = 0;
 
-            foreach (var tile in tiles)
+            if (tiles.Count > 0)
             {
-                var square = GetSquare(tiles, tile);
-                if (square > largestsquare)
+                var minx = tiles.Select(t => t.X).Min();
+                var maxx = tiles.Select(t => t.X).Max();
+                var dx = maxx - minx + 1;
+                var miny = tiles.Select(t => t.Y).Min();
+                var maxy = tiles.Select(t => t.Y).Max();
+                var dy = maxy - miny + 1;
+
+                foreach (var tile in tiles)
                 {
-                    largestsquare = square;
-                    res.Clear();
-                }
-                if(square >= largestsquare)
-                {
-                    res.Add(new Square { Size = square, StartTile = tile });
+                    if (((maxx - tile.X + 1) >= largestsquare) && ((maxy - tile.Y + 1) >= largestsquare))
+                    {
+                        var square = GetSquare(tiles, tile);
+                        if (square > largestsquare)
+                        {
+                            largestsquare = square;
+                            res.Clear();
+                        }
+                        if (square >= largestsquare)
+                        {
+                            res.Add(new Square { Size = square, StartTile = tile });
+                        }
+                    }
                 }
             }
 

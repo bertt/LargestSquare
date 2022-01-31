@@ -1,6 +1,5 @@
 using LargestSquare.Core;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using Tiles.Tools;
 
@@ -13,12 +12,12 @@ namespace LargestSquare.Tests
         [SetUp]
         public void Setup()
         {
-            var p0 = new Tile { X = 0, Y = 0, Z = 10 };
-            var p1 = new Tile { X = 1, Y = 0, Z = 10 };
-            var p2 = new Tile { X = 1, Y = 1, Z = 10 };
-            var p3 = new Tile { X = 0, Y = 1, Z = 10 };
+            var p0 = new Tile { X = 0, Y = 0, Z = 0 };
+            var p1 = new Tile { X = 1, Y = 0, Z = 0 };
+            var p2 = new Tile { X = 1, Y = 1, Z = 0 };
+            var p3 = new Tile { X = 0, Y = 1, Z = 0 };
 
-            tiles = new List<Tile> { p0, p1, p2, p3 };
+            tiles = new List<Tile> { p0, p1, p2, p3};
         }
 
         [Test]
